@@ -1,6 +1,6 @@
 ## My Portfolio
 
-### A place where I share my personality, experiences, projects, and thoughts!
+### A place where I share my experiences, projects, and thoughts!
 
 ```bash
 
