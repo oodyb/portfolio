@@ -1,4 +1,4 @@
-// ../app/layout.js
+// app/layout.js
 import { Special_Elite } from "next/font/google";
 import Wrapper from "./wrapper";
 import "./globals.css";
@@ -18,8 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${special_elite.variable} antialiased`}>
-        <Wrapper />
-        {children}
+        <Wrapper>
+          {children}
+        </Wrapper>
       </body>
     </html>
   );

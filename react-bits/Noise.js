@@ -1,4 +1,4 @@
-// ../components/Noise.js
+// react-bits/Noise.js
 import { useRef, useEffect } from 'react';
 
 const Noise = ({

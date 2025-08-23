@@ -1,4 +1,4 @@
-// ../app/loading.js
+// app/loading.js
 'use client'
 import LoadingCircle from "@/components/LoadingCircle";
 

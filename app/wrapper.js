@@ -1,17 +1,23 @@
-// ../app/wrapper.js
+// app/wrapper.js
 'use client'
-import Noise from '@/components/Noise'
+import Noise from '@/react-bits/Noise'
 
 export default function Wrapper({ children }) {
     return (
-        <div style={{ position: 'relative', }}>
-            <Noise
-                patternSize={500}
-                patternScaleX={0.1}
-                patternScaleY={0.1}
-                patternRefreshInterval={5}
-                patternAlpha={25}
-            />
+        <div className="relative min-h-screen">
+            <div className="fixed inset-0 w-full h-full z-0 pointer-events-none"
+                style={{ height: '100vh' }}>
+                <Noise
+                    patternSize={500}
+                    patternScaleX={0.1}
+                    patternScaleY={0.1}
+                    patternRefreshInterval={5}
+                    patternAlpha={25}
+                />
+            </div>
+            <div className="relative z-10">
+                {children}
+            </div>
         </div>
     );
 }

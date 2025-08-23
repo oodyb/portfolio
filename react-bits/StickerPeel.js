@@ -1,4 +1,4 @@
-// ../components/StickerPeel.js
+// react-bits/StickerPeel.js
 import { useRef, useEffect, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';

@@ -1,4 +1,4 @@
-// ../hooks/ScreenWidth.js
+// hooks/ScreenWidth.js
 import { useState, useEffect } from 'react';
 
 export default function useScreenWidth() {

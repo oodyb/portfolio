@@ -1,13 +1,11 @@
-// ../components/LoadingCircle.js
+// components/LoadingCircle.js
 'use client';
 import React from 'react';
 
 export default function LoadingCircle() {
     return (
         <div className="flex justify-center items-center relative">
-            {/* Main loading circle */}
             <div className="relative w-32 h-32">
-                {/* Outer ring - transparent inside */}
                 <div
                     className="absolute inset-0 rounded-full border-4 border-black animate-spin"
                     style={{
@@ -17,7 +15,6 @@ export default function LoadingCircle() {
                         mask: 'radial-gradient(farthest-side, #0000 calc(100% - 16px), #000 0)'
                     }}
                 />
-                {/* Center dot */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-black rounded-full" />
             </div>
         </div>
