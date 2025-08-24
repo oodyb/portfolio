@@ -20,10 +20,7 @@ const HeroSection = () => {
 
     return (
         <>
-            <h1
-                className="text-2xl xs:text-2xl sm:text-4xl md:text-6xl font-bold mb-2 px-2"
-                style={{ fontFamily: "var(--font-special_elite)" }}
-            >
+            <h1 className="text-2xl xs:text-2xl sm:text-4xl md:text-6xl font-bold mb-2 px-2" style={{ fontFamily: "var(--font-special_elite)" }}>
                 <TextType
                     text={["<ALWALEED S. DAHER />"]}
                     typingSpeed={75}
@@ -33,10 +30,8 @@ const HeroSection = () => {
                     textColors={[isDark ? "#f5f1e6" : "#1a1a1a"]}
                 />
             </h1>
-            <p
-                className="text-sm xs:text-md md:text-lg leading-relaxed bg-[#e3cdb1] p-1.5 xs:p-2 text-black mb-8 rounded-sm"
-                style={{ fontFamily: "var(--font-special_elite)" }}
-            >
+            <p className="text-sm xs:text-md md:text-lg leading-relaxed bg-[#e3cdb1] p-1.5 xs:p-2 text-black mb-8 rounded-sm"
+                style={{ fontFamily: "var(--font-special_elite)" }}>
                 <DecryptedText 
                     text={"Software Developer"} 
                     autoAnimate={true}

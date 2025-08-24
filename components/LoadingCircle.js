@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function LoadingCircle() {
     return (
-        <div className="flex justify-center items-center relative">
+        <div className="flex justify-center items-center relative z-20">
             <div className="relative w-32 h-32">
                 <div
                     className="absolute inset-0 rounded-full border-4 border-black animate-spin"

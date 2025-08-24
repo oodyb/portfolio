@@ -41,7 +41,7 @@ const ParallaxBlock = ({ scrollYProgress }) => {
     };
 
     return (
-        <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="fixed inset-0 z-10 pointer-events-none">
             <motion.div
                 className="absolute bg-[#e10000] dark:bg-[#a70000] transition-colors duration-300"
                 style={blockStyle}

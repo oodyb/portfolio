@@ -4,12 +4,20 @@
 :root {
   --background: #f7f4ee;
   --foreground: #1a1a1a;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1a1a1a;
     --foreground: #f5f1e6;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
 

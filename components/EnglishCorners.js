@@ -22,14 +22,10 @@ const EnglishCorners = ({ scrollYProgress }) => {
     const translateY = useTransform(scrollYProgress, [0, 0], [0, 0]);
 
     return (
-        <motion.div
-            className="fixed inset-0 z-10 pointer-events-none"
-            style={{ translateY }}
-        >
+        <motion.div className="fixed inset-0 z-10 pointer-events-none" style={{ translateY }}>
             {texts.concat(texts).map((text, i) => {
                 const pos = positions[i];
                 const isRight = pos.right;
-
                 return (
                     <p
                         key={i}

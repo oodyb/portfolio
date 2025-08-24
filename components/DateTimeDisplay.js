@@ -28,12 +28,8 @@ const DateTimeDisplay = () => {
 
     return (
         <>
-            <span className={`${badgeClass} left-0 ml-6 xs:ml-4 mt-4 xs:mt-4`}>
-                {dateTime.date}
-            </span>
-            <span className={`${badgeClass} right-0 mr-6 xs:mr-4 mt-4 xs:mt-4 pl-4 xs:pl-4`}>
-                {dateTime.arabicDay}
-            </span>
+            <span className={`${badgeClass} left-0 ml-6 xs:ml-4 mt-4 xs:mt-4`}> {dateTime.date} </span>
+            <span className={`${badgeClass} right-0 mr-6 xs:mr-4 mt-4 xs:mt-4 pl-4 xs:pl-4`}> {dateTime.arabicDay} </span>
         </>
     );
 };

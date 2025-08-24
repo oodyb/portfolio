@@ -1,3 +1,4 @@
+// app/page.js
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useScroll } from 'framer-motion';
@@ -62,52 +63,30 @@ const Page = () => {
   };
 
   return (
-    <div className="relative z-1">
+    <div className="relative">
       <ParallaxBlock scrollYProgress={scrollYProgress} />
 
-      <main ref={mainRef} className="flex min-h-screen items-center justify-center text-gray-600 dark:text-gray-400 relative overflow-hidden">
+      <main ref={mainRef} className="flex min-h-screen items-center justify-center text-gray-600 dark:text-gray-400 relative z-10 overflow-hidden">
         <ArabicCorners scrollYProgress={scrollYProgress} />
         <StickerGrid />
-
         <section className="relative flex flex-col justify-center items-center text-center w-82 xs:w-80 sm:w-7xl py-40 xs:py-54 sm:py-30 px-4">
           <DateTimeDisplay />
           <NavigationButtons onInfoClick={() => scrollToSection(1)} />
           <HeroSection />
         </section>
         <EnglishCorners scrollYProgress={scrollYProgress} />
-
-        <button
-          onClick={() => scrollToSection((currentSectionIndex + 1) % sections.length)}
-          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:hover:text-gray-200 hover:text-gray-800 transition-all duration-300"
-          aria-label="Scroll down"
-        >
-          <label className='justify-center'>[Scroll Down]</label>
-          <svg width="24" height="24" viewBox="0 0 0 0" fill="currentColor">
-            <path d="M12 16l-6-6h12l-6 6z" />
-          </svg>
-        </button>
       </main>
 
-      <section ref={infoRef} className="min-h-screen text-black dark:text-white flex items-center justify-center">
+      <section ref={infoRef} className="min-h-screen relative z-20 text-black dark:text-white flex items-center justify-center py-20">
+        {/* Projects section */}
+      </section>
+
+      <section ref={moreContentRef} className="min-h-screen relative z-20 text-black dark:text-white flex items-center justify-center">
         <div className="text-center">
-          <h2
-            className="text-4xl md:text-6xl font-bold mb-8"
-            style={{ fontFamily: "var(--font-special_elite)" }}
-          >
-            Info Section
-          </h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-8" style={{ fontFamily: "var(--font-special_elite)" }}> More Content </h2>
         </div>
       </section>
-      <section ref={moreContentRef} className="min-h-screen text-black dark:text-white flex items-center justify-center">
-        <div className="text-center">
-          <h2
-            className="text-4xl md:text-6xl font-bold mb-8"
-            style={{ fontFamily: "var(--font-special_elite)" }}
-          >
-            More Content
-          </h2>
-        </div>
-      </section>
+
     </div>
   );
 };

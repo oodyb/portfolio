@@ -1,4 +1,3 @@
-// tailwind.config.js (Add this to your config for xs breakpoint)
 /** @type {import('tailwindcss').Config} */
 export const content = [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
