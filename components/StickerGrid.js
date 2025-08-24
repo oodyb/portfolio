@@ -8,8 +8,8 @@ const StickerGrid = () => {
 
     const stickerConfigs = useMemo(() => {
         const baseConfig = {
-            peelBackHoverPct: 15,
-            peelBackActivePct: 35,
+            peelBackHoverPct: 25,
+            peelBackActivePct: 40,
             rotate: 0,
         };
 

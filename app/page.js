@@ -1,4 +1,3 @@
-// app/page.js
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useScroll } from 'framer-motion';
@@ -70,7 +69,7 @@ const Page = () => {
         <ArabicCorners scrollYProgress={scrollYProgress} />
         <StickerGrid />
 
-        <section className="relative flex flex-col justify-center items-center text-center w-72 xs:w-80 sm:w-7xl py-40 xs:py-54 sm:py-30 px-4">
+        <section className="relative flex flex-col justify-center items-center text-center w-82 xs:w-80 sm:w-7xl py-40 xs:py-54 sm:py-30 px-4">
           <DateTimeDisplay />
           <NavigationButtons onInfoClick={() => scrollToSection(1)} />
           <HeroSection />
@@ -78,8 +77,8 @@ const Page = () => {
         <EnglishCorners scrollYProgress={scrollYProgress} />
 
         <button
-          onClick={() => scrollToSection(1)}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 hover:text-gray-800 transition-all duration-300"
+          onClick={() => scrollToSection((currentSectionIndex + 1) % sections.length)}
+          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:hover:text-gray-200 hover:text-gray-800 transition-all duration-300"
           aria-label="Scroll down"
         >
           <label className='justify-center'>[Scroll Down]</label>

@@ -14,23 +14,23 @@ const NavigationButton = ({ className, children, onClick, ...props }) => (
 
 const NavigationButtons = ({ onInfoClick }) => {
   const buttons = [
-    { 
-      bText: '<Thoughts />', 
+    {
+      bText: '<Thoughts />',
       position: 'bottom-20 xs:bottom-26 left-3 xs:left-6',
       onClick: () => console.log('Thoughts clicked')
     },
-    { 
-      bText: '<Projects />', 
+    {
+      bText: '<Projects />',
       position: 'bottom-14 xs:bottom-20 left-3 xs:left-6',
       onClick: () => console.log('Projects clicked')
     },
-    { 
-      bText: '<Info />', 
+    {
+      bText: '<Info />',
       position: 'bottom-20 xs:bottom-26 right-3 xs:right-6',
       onClick: onInfoClick
     },
-    { 
-      bText: '<Contact />', 
+    {
+      bText: '<Contact />',
       position: 'bottom-14 xs:bottom-20 right-3 xs:right-6',
       onClick: () => console.log('Contact clicked')
     },
@@ -40,7 +40,12 @@ const NavigationButtons = ({ onInfoClick }) => {
     <>
       {buttons.map(({ bText, position, onClick }, i) => (
         <NavigationButton key={i} className={position} onClick={onClick}>
-          <DecryptedText text={bText}/>
+          <DecryptedText
+            text={bText}
+            autoAnimate={true}
+            autoAnimateInterval={i * 1000}
+            maxIterations={6}
+          />
         </NavigationButton>
       ))}
     </>

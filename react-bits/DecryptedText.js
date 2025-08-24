@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 
 export default function DecryptedText({
     text,
-    speed = 100,
+    speed = 110,
     maxIterations = 10,
     sequential = false,
     revealDirection = 'start',
@@ -14,14 +14,51 @@ export default function DecryptedText({
     parentClassName = '',
     encryptedClassName = '',
     animateOn = 'hover',
+    autoAnimate = false,
+    autoAnimateInterval = 5000,
     ...props
 }) {
     const [displayText, setDisplayText] = useState(text)
     const [isHovering, setIsHovering] = useState(false)
+    const [isAutoAnimating, setIsAutoAnimating] = useState(false)
     const [isScrambling, setIsScrambling] = useState(false)
     const [revealedIndices, setRevealedIndices] = useState(new Set())
     const [hasAnimated, setHasAnimated] = useState(false)
     const containerRef = useRef(null)
+    const autoAnimationTimeoutRef = useRef(null)
+    const autoAnimationIntervalRef = useRef(null)
+
+    // Auto animation effect
+    useEffect(() => {
+        if (!autoAnimate) return
+
+        const startAutoAnimation = () => {
+            setIsAutoAnimating(true)
+            autoAnimationTimeoutRef.current = setTimeout(() => {
+                setIsAutoAnimating(false)
+            }, maxIterations * speed + 500)
+        }
+
+        const scheduleNextAnimation = () => {
+            // Generate random interval each time (3-8 seconds)
+            const randomInterval = 3000 + Math.random() * 5000
+            autoAnimationTimeoutRef.current = setTimeout(() => {
+                startAutoAnimation()
+                scheduleNextAnimation()
+            }, randomInterval)
+        }
+
+        // Start first animation after initial random delay
+        const initialDelay = Math.random() * autoAnimateInterval
+        setTimeout(() => {
+            startAutoAnimation()
+            scheduleNextAnimation()
+        }, initialDelay)
+
+        return () => {
+            clearTimeout(autoAnimationTimeoutRef.current)
+        }
+    }, [autoAnimate, autoAnimateInterval, maxIterations, speed])
 
     useEffect(() => {
         let interval
@@ -41,7 +78,6 @@ export default function DecryptedText({
                         revealedSet.size % 2 === 0
                             ? middle + offset
                             : middle - offset - 1
-
                     if (nextIndex >= 0 && nextIndex < textLength && !revealedSet.has(nextIndex)) {
                         return nextIndex
                     }
@@ -97,7 +133,9 @@ export default function DecryptedText({
             }
         }
 
-        if (isHovering) {
+        // Animation triggers: hover OR auto animation
+        const shouldAnimate = isHovering || isAutoAnimating
+        if (shouldAnimate) {
             setIsScrambling(true)
             interval = setInterval(() => {
                 setRevealedIndices((prevRevealed) => {
@@ -136,6 +174,7 @@ export default function DecryptedText({
         }
     }, [
         isHovering,
+        isAutoAnimating,
         text,
         speed,
         maxIterations,
@@ -165,6 +204,7 @@ export default function DecryptedText({
 
         const observer = new IntersectionObserver(observerCallback, observerOptions)
         const currentRef = containerRef.current
+
         if (currentRef) {
             observer.observe(currentRef)
         }
@@ -190,12 +230,10 @@ export default function DecryptedText({
             {...props}
         >
             <span className="sr-only">{displayText}</span>
-
             <span aria-hidden="true">
                 {displayText.split('').map((char, index) => {
                     const isRevealedOrDone =
-                        revealedIndices.has(index) || !isScrambling || !isHovering
-
+                        revealedIndices.has(index) || !isScrambling || (!isHovering && !isAutoAnimating)
                     return (
                         <span
                             key={index}
